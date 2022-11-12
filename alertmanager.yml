@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 1m
+route:
+  receiver: 'discord_webhook'
+receivers:
+    - name : 'discord_webhook'
+      webhook_configs:
+      - url: '<discord-url>'
+      email_configs:
+      - to: <receiver-email>
+        from: <sender-email>
+        smarthost: email-smtp.us-west-2.amazonaws.com:587
+        auth_username: <username>
+        auth_identity: <username>
+        auth_password: PASSWORD_TO_REPLACE
+        send_resolved: true
