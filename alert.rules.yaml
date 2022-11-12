@@ -1,0 +1,11 @@
+groups:
+- name: AllInstances
+  rules:
+  - alert: NODE_NAME_TO_REPLACE NODE-FAILURE
+    expr: up == 0
+    for: 1m
+    annotations:
+      title: 'Instance {{ $labels.instance }} of NODE_NAME_TO_REPLACE is down'
+      description: NODE_NAME_TO_REPLACE is down. '{{ $labels.instance }} of NODE_NAME_TO_REPLACE of job {{ $labels.job }} has been down for more than 1 minute. {{ $labels.instance }} targets the metrics of substrate_node. The alarm has triggered as {{ $labels.job }} node stopped producing blocks.'
+    labels:
+      severity: 'critical'
